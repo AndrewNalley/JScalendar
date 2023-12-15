@@ -3,7 +3,6 @@ let clicked = null
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : []
 
 const calendar = document.getElementById('calendar')
-
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 
@@ -23,8 +22,8 @@ function load() {
     month: 'numeric',
     day: 'numeric',
   })
-  const paddingDays = weekdays.indexOf(dateString.split(', ')[0])
 
+  const paddingDays = weekdays.indexOf(dateString.split(', ')[0])
 
 
 
@@ -32,24 +31,11 @@ function load() {
     const daySquare = document.createElement('div')
     daySquare.classList.add('day')
 
-    const dayString = `${month + 1}/${i - paddingDays}/${year}`
 
     if (i > paddingDays) {
-      daySquare.innerText = i - paddingDays
-      const eventForDay = events.find(e => e.date === dayString)
+        daySquare.innerText = i - paddingDays
 
-      if (i - paddingDays === day && nav === 0) {
-        daySquare.id = 'currentDay'
-      }
-
-      if (eventForDay) {
-        const eventDiv = document.createElement('div')
-        eventDiv.classList.add('event')
-        eventDiv.innerText = eventForDay.title
-        daySquare.appendChild(eventDiv)
-      }
-
-      daySquare.addEventListener('click', () => openModal(dayString))
+        daySquare.addEventListener('click', () => console.log('click'))
     } else {
       daySquare.classList.add('padding')
     }
